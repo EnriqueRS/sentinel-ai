@@ -24,6 +24,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import({AlertPersistenceAdapter.class})
 public class AlertPersistenceAdapterTest {
+
   @Container
   @ServiceConnection
   static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine");
@@ -32,7 +33,7 @@ public class AlertPersistenceAdapterTest {
   private AlertPersistenceAdapter adapter;
 
   @Autowired
-  private SpringDataAlertRepository springRepository;
+  private SpringDataAlertRepository alertRepository;
 
   @Test
   @DisplayName("Should save alert successfully")
@@ -46,11 +47,9 @@ public class AlertPersistenceAdapterTest {
         Instant.now()
     );
 
-    // 2. Act: Usar el adapter para guardar
     adapter.save(alert);
 
-    // 3. Assert: Verificar que está en la base de datos real
-    Optional<AlertEntity> alertEntity = springRepository.findById(uuid);
+    Optional<AlertEntity> alertEntity = alertRepository.findById(uuid);
     assertTrue(alertEntity.isPresent());
     assertEquals("payment-service", alertEntity.get().getServiceName());
     assertEquals(AlertSeverity.CRITICAL, alertEntity.get().getSeverity());

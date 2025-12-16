@@ -1,6 +1,11 @@
 package com.github.enriquers.sentinelai.infrastructure.adapters.out.persistence;
 
 import com.github.enriquers.sentinelai.domain.model.Alert;
+import com.github.enriquers.sentinelai.domain.model.AlertSeverity;
+import com.github.enriquers.sentinelai.domain.model.AlertStatus;
+import com.github.enriquers.sentinelai.infrastructure.adapters.in.listener.AlertDTO;
+import java.time.Instant;
+import java.util.UUID;
 
 public class AlertMapper {
 

@@ -3,7 +3,6 @@ package com.github.enriquers.sentinelai;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.enriquers.sentinelai.domain.model.AlertSeverity;
 import com.github.enriquers.sentinelai.infrastructure.adapters.in.listener.KafkaAlertListener;
 import com.github.enriquers.sentinelai.infrastructure.adapters.out.persistence.AlertEntity;
@@ -55,9 +54,6 @@ class SentinelAiApplicationTests {
 
   @Autowired
   private JdbcTemplate jdbcTemplate;
-
-  @Autowired
-  private ObjectMapper objectMapper;
 
   @Autowired
   private SpringDataAlertRepository alertRepository;

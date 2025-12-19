@@ -29,6 +29,7 @@ public class AlertManagementService implements ProcessAlertUseCase, ReportAlertU
     } else {
       log.info("Alert received: {} from Service: {}", alert, alert.getServiceName());
     }
+    alert.markAsAnalyzing();
   }
 
   @Override
